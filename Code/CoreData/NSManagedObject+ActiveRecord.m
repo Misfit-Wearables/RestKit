@@ -250,7 +250,18 @@ RK_FIX_CATEGORY_BUG(NSManagedObject_ActiveRecord)
 
 + (NSEntityDescription *)entityDescriptionInContext:(NSManagedObjectContext *)context
 {
-    NSString *entityName = NSStringFromClass([self class]);
+    NSString *entityName = nil;
+    
+    // Patch here to cooperate w/ MFLibrary
+    if ([self respondsToSelector:@selector(entityName)]) 
+    {
+        entityName = [self performSelector:@selector(entityName)];
+    }
+    else
+    {
+        entityName = NSStringFromClass([self class]);
+    }
+    
     return [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
 }
 
