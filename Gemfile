@@ -15,6 +15,6 @@ gem 'faker', '1.0.1'
 gem 'rack-oauth2-server', :git => 'https://github.com/assaf/rack-oauth2-server.git'
 gem 'rspec'
 gem 'rack-test'
-gem 'mongo'
+gem 'mongo', '>= 2.0.0'
 gem 'simple_oauth', :git => 'https://github.com/laserlemon/simple_oauth.git'
 
